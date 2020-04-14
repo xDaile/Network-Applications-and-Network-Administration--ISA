@@ -1,0 +1,28 @@
+.TH d6r 1
+.SH NAME
+d6r \- relay agent that relays dhcpv6 messages
+.SH SYNOPSIS
+d6r \-s serverAddress [\-d] [\-l] [\-i interface]
+.SH DESCRIPTION
+Program d6r relays solicit and request messages from client to server as relay-forward messages , and reply and advertise messages that are encapsulated in relay-replay messages, from server to client as defined in RFC6939.
+.SH OPTIONS
+.TP
+.BR \-s " " server
+Option server is an Ipv6 address of dhcp server that the messages are relayed to.
+.TP
+.BR \-d
+Turn on printing info about assigned ipv6 addresses on stdout, in format ipv6_addres,mac_addres or ipv6_address/prefix,mac_address.
+.TP
+.BR \-l
+Turn on printing info about assigned ipv6 addresses into syslog in format ipv6_addres,mac_addres or   ipv6_address/prefix,mac_address.
+.TP
+.BR \-i " " interface
+Interface is the name of the interface that the relay listens on.
+.SH EXAMPLES
+To listen on enp0s3, printing debug info to output and syslog and communicate with 2001:67c:1220:80c::93e5:dd2 server use
+.BR ./d6r \-s 2001:67c:1220:80c::93e5:dd2 \-d \-l \-i enp0s3
+To listen on all interfaces and print nothing use
+.BR ./d6r \-s 2001:67c:1220:80c::93e5:dd2 
+.SH AUTHOR
+Michal Zelenak for Subject ISA at FIT VUT
+xzelen24@stud.fit.vutbr.cz
